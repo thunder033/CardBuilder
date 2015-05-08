@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<base href="/">
         <title>Garage Band Cards</title>
-        <link rel="stylesheet" type="text/css" href="styles/card-builder.css">
+        <link rel="stylesheet" type="text/css" href="css/card-builder.css">
         <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="js/card-builder.js"></script>
     </head>
     <body>
-        
-        
         <span id="cards-idle-elapsed"></span>
         
         <header></header>
