@@ -1,0 +1,244 @@
+ body {
+                padding-top: 2.2em;
+                font-family: "Segoe UI";
+            }
+            div.card, #new-card, div.card-back {
+                width: 256pt;
+                width: 170.66pt;
+                height: 6.08cm;
+                height: 170.75pt;
+                height: 227.66pt;
+                border: 1px #aaa dotted;
+                position: relative;
+                font-size: 13pt;
+                font-family: Arial;
+                font-family: "Segoe UI";
+                font-weight: bold;
+                float: left;
+                text-align: center;
+                background-size: cover;
+                background-position: center;
+                /*box-sizing: border-box;
+                border-collapse: collapse;*/
+            }
+            div.card .content {
+                position: absolute;
+                top: 40px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                 flex-wrap: wrap;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                align-content: center;
+                padding: 10pt;
+            }
+            div.card-back {
+                display: none;
+            }
+
+            #new-card {
+                border: 2px #ccc dashed;
+                margin: 5pt;
+                height: 216pt;
+                width: 150.75pt;
+                color: #555;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                position: relative;
+                transition: all .5s;
+            }
+            #new-card:hover {
+                background: #C6F2A5;
+                color: #000;
+            }
+            #new-card:after {
+                content: "+";
+                position: absolute;
+                top: 51%;
+                left: 0;
+                right: 0;
+                transform: translateY(-60%);
+                color: rgba(0,0,0,.1);
+                font-size: 220pt;
+                font-weight: bold;
+                opacity: 0;
+                transition: all .5s;
+            }
+            #new-card:hover:after {
+                opacity: 1;
+            }
+            
+            input[type=checkbox], label {
+                position: fixed;
+                top: .3em;
+                left: 1em;
+                z-index: 10;
+            }
+            
+            label {
+                left: 2.5em;
+            }
+            body>header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #ddd;
+                border-bottom: 1px #999 solid;
+                height: 2em;
+                z-index: 5;
+            }
+            #cards-idle-elapsed {
+                position: fixed;
+                top: .5em;
+                right: .5em;
+                z-index: 10;
+            }
+            #cards-idle-elapsed.outdated {
+                color: #f00;
+                font-weight: bold;
+            }
+            
+            input[type=checkbox].back:not(:checked) ~ div.card .content, input[type=checkbox].back:not(:checked) ~ div.card .content *{
+                color: #000 !important;
+            }
+            input[type=checkbox].back:checked ~ div.card {
+                color: #fff;
+                font-size: 0;
+                background-image: url("./IGME220/images/cardBack_ROCK.png");
+               
+            }
+            input[type=checkbox].back:checked ~ div.card .content:after, div.card-back:after {
+                content: attr(data-category);
+                color: transparent;
+                text-align: center;
+                display: block;
+                font-size: 15pt;
+                text-transform: uppercase;
+            }
+            div.card-back:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+            input[type=checked].back:checked ~ div.card:before {
+                font-size: 12pt;
+            }
+            .card :empty {
+                display: block;
+                min-height: 1em;
+            }
+            
+            .card:before {
+                content: "X";
+                color: #333;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                line-height: 20px;
+                padding: 10px 5px 9px;
+                width: 20px;
+                background: transparent;
+                transition: all .3s;
+                z-index: 5;
+            }
+            .card:hover:before {
+                transition: all .3s;
+                opacity: 1;
+                cursor: pointer;
+                background: #ccc;
+                font-size: 12pt;
+            }
+            .card:after {
+                content: attr(id);
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+                font-size: .8em;
+                color: #ccc;
+                text-shadow: 0;
+                font-weight: normal;
+            }
+            
+            .card header {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 3;
+            }
+            .card span.break {
+                display: block;
+                height: 10px;
+                width: 100%;
+                border-bottom: 1px #bbb solid;
+                margin-bottom: 10px;
+            }
+            .card span.break:after {
+                content: "or";
+                font-size: .9rem;
+                font-weight: normal;
+                position: relative;
+                top: 3px;
+                background: #fff;
+                padding: 0 3px;
+            }
+            
+            .card select.category {
+                width: 100%;
+                z-index: 10;
+                display: block;
+                font-weight: bold;
+                background: #333;
+                color: #fff;
+                padding: .3rem;
+                font-size: 1.2em;
+                font-weight: bold;
+                text-transform: uppercase;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -webkit-print-color-adjust: exact;
+                font-family: "Segoe UI";
+                margin: 0;
+            }
+            .card select.category::-ms-expand {
+                display: none;
+            }
+            .card select.category:active {
+                color: #333;
+                background: #fff;
+            }
+            
+            @media print {
+                html, body {
+                    margin: 0;
+                    padding: 0;
+                    display: block;
+                }
+                body *:not(.print), .card:before {
+                    display: none !important;
+                }
+                
+                .print:nth-child(9n + 13)
+                {
+                    margin-bottom: 2px;
+                }
+                
+                div.card-back {
+                    display: block;
+                }
+            }
