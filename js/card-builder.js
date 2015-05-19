@@ -32,7 +32,7 @@
                         else {
                             $("#cards-idle-elapsed").removeClass("outdated");
                         }
-                    })
+                    });
                     prevHTML = $("#cards").html();
                 }, 2000);
                 
@@ -66,8 +66,8 @@
                 
                 function removeCard(e)
                 {
-                    var x = e.pageX - $(this).offset().left
-                    var y = e.pageY - $(this).offset().top
+                    var x = e.pageX - $(this).offset().left;
+                    var y = e.pageY - $(this).offset().top;
                     
                     //check if the user clicked on the X in upper right hand corner
                     if(x > $(this).width() - 30 && y < 30)
@@ -77,19 +77,28 @@
                 }
                 
                 function insertBreak(e)
-                {
+                {	
                     if(ctrlKey && altKey && e.keyCode == 66)
                     {
-                        ctrlKey = false;
-                        altKey = false;
-                        
+						ctrlKey = false;
+						altKey = false;
+						
                         var cardHTML = $(this).html();
                         cardHTML = cardHTML.replace("-or-", "<span class='break print'></span>");
                         console.log(cardHTML);
                         $(this).html(cardHTML);
-                        
                     }
-                
+					
+                	if(ctrlKey && altKey && e.keyCode == 68) {
+						ctrlKey = false;
+						altKey = false;
+						
+						var cardHTML = $(this).html();
+                        cardHTML = cardHTML.replace("+1", "<span class='draw print' title='+1'></span>");
+						cardHTML = cardHTML.replace("+2", "<span class='draw print' title='+2'></span>");
+                        console.log(cardHTML);
+                        $(this).html(cardHTML);
+					}
                 }
                 
                 ctrlKey = false;
